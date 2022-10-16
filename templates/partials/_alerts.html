@@ -1,0 +1,127 @@
+<style>
+	.fade.show {
+    opacity: 1;
+}
+
+.alert-warning {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
+}
+.alert-dismissible {
+    padding-right: 4rem;
+}
+.alert {
+    position: relative;
+    padding: .75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+}
+.fade {
+    opacity: 0;
+    transition: opacity .15s linear;
+}
+.bd-example::after {
+    display: block;
+    clear: both;
+    content: "";
+}
+</style>
+<style>
+.alert-success {
+color: #155724 !important;
+background-color: #d4edda !important;
+border-color: #c3e6cb !important;
+}
+
+.alert-info {
+color: #0c5460 !important;
+background-color: #d1ecf1 !important;
+border-color: #bee5eb !important;
+}
+
+
+.alert-danger {
+    color: #721c24 !important;
+background-color: #f8d7da !important;
+border-color: #f5c6cb !important;
+}
+
+</style>
+
+{% if messages %}
+{% for msg in messages %}
+
+
+
+
+        
+        {% if 'danger' == msg.tags %}
+			
+        <div class="alert alert-danger: alert-dismissible fade show" role="alert"
+        
+        style="
+color: #721c24 !important;
+background-color: rgb(225 182 186) !important;
+border-color: #f5c6cb !important;
+        "
+        >
+        Error:            
+
+
+        
+		{% endif %}
+
+
+
+        {% if 'info' == msg.tags %}
+			
+        <div class="alert alert-info: alert-dismissible fade show" role="alert"
+        
+        style="
+        color: #0c5460 !important;
+        background-color: #d1ecf1 !important;
+        border-color: #bee5eb !important;
+        "
+        >
+        Info:            
+
+
+        
+		{% endif %}
+
+
+
+
+
+        {% if 'success' == msg.tags %}
+			
+        <div class="alert alert-success: alert-dismissible fade show" role="alert"
+        
+        style="
+color: #155724 !important;
+background-color: #d4edda !important;
+border-color: #c3e6cb !important;
+        "
+        >
+        success:            
+
+        
+		{% endif %}
+
+
+
+
+
+	{{msg}}
+
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	  <span aria-hidden="true">&times;</span>
+	</button>
+  </div>
+
+
+
+{% endfor %}
+{% endif %}

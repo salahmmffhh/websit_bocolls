@@ -1,0 +1,209 @@
+
+
+</head>
+
+{%   extends 'base.html'   %}
+{% load static %}
+{% block title %}Home{% endblock %}
+{%  block content  %}
+
+<style>
+  .p{
+      text-align: center;
+  font-weight: bold;
+  font-size: 4em;
+  margin: 21px;
+  color: #333 !important;
+  margin: 79px 0;
+         }    
+         .dark-theme .p{
+          color: #fff !important;
+          }
+         .loader {
+width: 82px;
+height: 18px;
+position: relative;
+}
+.loader::before , .loader::after {
+content: '';
+position: absolute;
+left: 50%;
+transform: translate(-50% , 10%);
+top: 0;
+background: #FF3D00;
+width: 16px;
+height: 16px;
+border-radius: 50%;
+animation: jump 0.5s ease-in infinite alternate;
+}
+
+.loader::after {
+background: #0000;
+color: #fff;
+top: 100%;
+box-shadow: 32px -20px , -32px -20px;
+animation: split 0.5s ease-out infinite alternate;
+}
+
+@keyframes split {
+0% { box-shadow: 8px -20px, -8px -20px}
+100% { box-shadow: 32px -20px , -32px -20px}
+}
+@keyframes jump {
+0% { transform: translate(-50% , -150%)}
+100% { transform: translate(-50% , 10%)}
+}
+
+
+
+
+
+
+  
+
+.home #next-slide:hover, .home #prev-slide:hover {
+background: var(--main-color);
+color: #fff;
+}
+</style>
+
+
+
+
+<section class="home">
+
+  <div class="slides-container">
+
+      <div class="slide active">
+          <div class="content">
+              <span class="bc">fresh and organic</span>
+              <h3>upto 50% off</h3>
+              <a href="#" class="btn btnc">shop now</a>
+          </div>
+          <div class="image">
+              <img src="{% static 'image/home-img-1.png' %}" alt="">
+          </div>
+      </div>
+
+      <div class="slide">
+          <div class="content">
+              <span class="bc">fresh and organic</span>
+              <h3>upto 50% off</h3>
+              <a href="#" class="btn btnc">shop now</a>
+          </div>
+          <div class="image">
+              <img src="{% static 'image/home-img-2.png' %}" alt="">
+          </div>
+      </div>
+
+      <div class="slide">
+          <div class="content">
+              <span class="bc">fresh and organic</span>
+              <h3>upto 50% off</h3>
+              <a href="#" class="btn btnc">shop now</a>
+          </div>
+          <div class="image">
+              <img src="{% static 'image/home-img-3.png' %}" alt="">
+          </div>
+      </div>
+
+  </div>
+
+  <div id="next-slide" class="fas fa-angle-right" onclick="next()"></div>
+  <div id="prev-slide" class="fas fa-angle-left" onclick="next()"></div>
+
+</section>
+
+
+
+<h1 class="p"> Latest Products</h1>
+
+<section class="products">
+
+
+    <div class="box-container">
+
+
+
+            {% for pro in products|slice:':6' %}
+            <div class="box">
+                <div class="icons">
+                    <a href="#" class="fas fa-shopping-cart bcs"></a>
+                    <a href="#" class="fas fa-heart bcs"></a>
+                    <!-- <a class="statu fas " style="
+    position: absolute;
+    top: 11px;
+    right: 391px;
+    width: 62px;
+    height: 39px;
+    font-size: 14px;
+    font-family: 'Merienda';
+    text-align: center;
+                    ">{{pro.statu}}</a> -->
+                    <a href="{% url 'product' pro_id=pro.id %}" class="fas fa-eye bcs"></a>
+                </div>
+            <div class="image">
+                <img style="    width: 100%;
+                height: 100%;" src="{{pro.photo.url}}" alt="">
+            </div>
+
+            <div class="content">
+                <h3 class="text-truncate" style="font-size: 3rem;">{{pro.name}}</h3>
+                <div class="price" style="font-size: 2.5rem;">{{pro.price}}$</div>
+                <!-- <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="far fa-star"></i>
+                </div> -->
+            </div>
+        </div>
+
+
+            {% endfor %}
+
+    </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+<div class="preloader js-preloader flex-center">
+    <div class="dots">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+    </div>
+</div>
+<script src="{% static 'js/jquery-3.3.1.min.js' %}" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT" crossorigin="anonymous"></script>
+<script src="{% static 'js/jquery.preloadinator.min.js' %}"></script>
+<script>
+    $('.js-preloader').preloadinator({
+        minTime: 2000
+    });
+</script>
+
+{% endblock %}
+<script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-36251023-1']);
+    _gaq.push(['_setDomainName', 'jqueryscript.net']);
+    _gaq.push(['_trackPageview']);
+    
+    (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    
+    </script>

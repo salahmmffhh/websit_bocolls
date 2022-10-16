@@ -1,0 +1,118 @@
+<style>
+	.form-control {
+    display: block;
+    width: 100%;
+    height: 38px !important;
+    padding: .375rem .75rem;
+    font-size: 13px;
+    font-weight: 900;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+</style>
+{%   extends 'base.html'   %}
+{% load static %}
+{% block title %} Checkout {% endblock %}
+{%  block content  %}
+
+{% if not request.user.is_authenticated or request.user.is_anonymous %}
+<div class="alert alert-danger: alert-dismissible fade show" role="alert"
+    
+style="
+font-size: 20px;
+    margin: 52px;
+color: #721c24 !important;
+background-color: rgb(225 182 186) !important;
+border-color: #f5c6cb !important;
+"
+>
+you must be <a class="text-dark" href="{% url 'login' %}"> login </a>
+
+</div>
+
+
+{% elif not order %}
+
+
+<div class="alert alert-danger: alert-dismissible fade show" role="alert"
+    
+style="
+font-size: 20px ;
+    margin: 52px ;
+color: #721c24 !important ;
+background-color: rgb(225 182 186) !important ;
+border-color: #f5c6cb !important ;
+"
+>
+No Orders Here
+
+</div>
+{% else %}
+
+
+					<div class="my-form container p-5 my-5 rounded border border-warning">
+						{% if is_added == True %}
+						<form method="POST" style="display: none">
+						{% else %}
+						<form method="POST">
+						{% endif %}
+						{% csrf_token %}
+
+							<h2 class="text-center">Checkout</h2>
+							<hr>
+{% include 'partials/_alerts.html' %}
+
+
+
+
+Order Number: {{order.id}} 
+
+<hr>
+
+Product Count:    {{orderdetails.count}}
+<hr>
+total Ammount  {{total}}$ 
+<hr>
+<a href="{% url  'cart' %}" class="btn btn-secondary">Cart Details</a>
+<hr>
+							<div class="form-row">
+								<div class="form-group col-md-6">
+									<label for="inputship_address">Shipment Address</label>
+									<input type="text" class="form-control" name="ship_address" id="inputship_address" required value="{{ship_address}}">
+								</div>
+								<div class="form-group col-md-6">
+									<label for="inputship_phone">Shipment Phone</label>
+									<input type="text" class="form-control" name="ship_phone" id="inputship_phone" required value="{{ship_phone}}">
+								</div>
+							</div>
+				
+							<div class="form-group">
+								<label for="inputcard_nub">Card Number</label>
+								<input type="text" class="form-control" name="card_nub" id="inputcard_nub" placeholder="3333 3333 3333 3333" required value="{{card_nub}}">
+							</div>
+							<div class="form-group ">
+								<label for="inputexpire">Expire</label>
+								<input type="text" class="form-control" id="inputexpire" name="expire" placeholder="mm/YY" value="{{expire}}" required>
+							</div>
+
+							<div class="form-group ">
+								<label for="security_code">Security Code</label>
+								<input type="text" class="form-control" id="security_code" name="security_code" placeholder="333" value="{{security_code}}" required>
+							</div>
+							
+
+							<button type="submit" name="btnpayment" class="btn btn-warning bcs">Payment</button>
+						</form>
+				
+					</div>
+{% endif %}
+
+	
+
+
+					{% endblock %}

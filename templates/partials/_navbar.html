@@ -1,0 +1,254 @@
+
+
+<!-- header section ends -->
+
+<style>
+
+  .navbar{
+    animation: lonv 3s;
+    transition: 1s;
+}  
+.dark-theme .header{
+  background: #333;
+  }
+
+  .dark-theme .header a{
+    color: #fff;
+    } 
+    .dark-theme .header .activen {
+      color: var(--main-color) !important;
+  }
+
+  @keyframes lonv{
+    10%,20%{
+      bottom: 82px;
+
+      opacity: 0.2;
+    }
+    30%,40%{
+      opacity: 0.4;
+    }
+    50%,60%{
+      opacity: 0.6;
+    }
+    70%,80%{
+      opacity: 0.8;
+    }
+
+    90%,100%{
+      bottom: 0px;
+      opacity: 1;
+    }
+  }
+
+  .logo{
+    animation: logo 5s;
+    position: relative;
+}
+
+
+@keyframes logo{
+    10%,20%{
+      right: 82px;
+
+      opacity: 0.2;
+    }
+    30%,40%{
+      opacity: 0.4;
+    }
+    50%,60%{
+      opacity: 0.6;
+    }
+    70%,80%{
+      opacity: 0.8;
+    }
+
+    90%,100%{
+      right: 0px;
+      opacity: 1;
+    }
+  }
+  
+  .icons{
+    animation: loic 5s;
+    position: relative;
+}
+
+
+@keyframes loic{
+    10%,20%{
+      left: 82px;
+
+      opacity: 0.2;
+    }
+    30%,40%{
+      opacity: 0.4;
+    }
+    50%,60%{
+      opacity: 0.6;
+    }
+    70%,80%{
+      opacity: 0.8;
+    }
+
+    90%,100%{
+      left: 0px;
+      opacity: 1;
+    }
+  }
+
+
+</style>
+
+<style>
+  .star:hover{    color: #bac34e !important;}
+  html::marker{display: none !important;}
+  .dropdown-item:focus, .dropdown-item:hover {
+  color: #16181b;
+  text-decoration: none;
+  background-color: #f8f9fa;
+  width: 138px;
+}
+.slideIn {
+  -webkit-animation-name: slideIn;
+  animation-name: slideIn;
+  left: 110px;
+}
+.ah:hover {
+    color: #bac34e;
+    position: relative;
+    padding-left: 34px;
+}
+.ah {
+  transition: 0.5s;
+}
+</style>
+{% load static %}
+ <!-- header section starts  -->
+
+<header class="header">
+
+  <a href="{% url 'index' %}" class="logo"> <i class="fas fa-shopping-basket bc"></i> groco </a>
+
+  <nav class="navbar">
+      <a 
+      {% if '/' == request.path %}
+      class="activen"
+      {% else %}
+      class="a"
+      {% endif %}
+      href="{% url 'index' %}">home</a>
+      <a
+      
+      {% if 'shop' in request.path %}
+      class="activen"
+      {% else %}
+      class="a"
+      {% endif %}
+      
+      href="{% url 'shop' %}">shop</a>
+
+
+
+        <a
+        
+              {% if 'login' in request.path or 'signup' in request.path or 'profile' in request.path %}
+      class="nav-link dropdown-toggle activen"
+      {% else %}
+      class="nav-item dropdown"
+      {% endif %}
+
+         href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      {% if request.user.is_authenticated %}
+         Welcome
+     {% else %}
+     Join us 
+     {% endif %}
+     </a>
+ {% if request.user.is_authenticated %}
+         <div class="dropdown-menu animate slideIn" aria-labelledby="navbarDropdown">
+
+ <a href="{% url 'profile'%}" class="dropdown-item">
+     profile({{request.user.username}})
+ </a>
+ <a href="{% url 'show_product_favorite'%}" class="dropdown-item">My Favorite</a>
+ <a href="{% url 'cart'%}" class="dropdown-item">My Cart</a>
+ <a href="{% url 'logout'%}" class="dropdown-item">
+     Logout</a>
+
+     {% else %}
+
+        </a>
+        <div class="dropdown-menu animate slideIn" style="width: 36%;" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item ah" href="{% url 'login' %}">Sign in</a>
+        <a class="dropdown-item ah" href="{% url 'signup' %}">Sign up</a>
+        <div class="dropdown-divider"></div>
+
+        {% endif %}
+        </div>
+
+
+      <a 
+     
+      {% if 'about' in request.path %}
+      class="activen"
+      {% else %}
+      class="a"
+      {% endif %}
+      
+      href="{% url 'about' %}">about</a>
+      <a
+      
+      {% if 'blog' in request.path %}
+      class="activen"
+      {% else %}
+      class="a"
+      {% endif %}
+    
+      
+      href="{% url 'blog' %}">blog</a>
+      <a
+      
+      {% if 'contact' in request.path %}
+      class="activen"
+      {% else %}
+      class="a"
+      {% endif %}
+      
+      href="{% url 'contact' %}">contact</a>
+
+    </nav>
+        
+
+  
+
+  <div class="icons">
+    <a  style="    font-size: 2.5rem;" type="button" class="nav-item theme" id="theme-toggle">🌚</a>
+      <div id="menu-btn" class="fas fa-bars bc"></div>
+      <div id="search-btn" class="fas fa-search bc"></div>
+      <div id="cart-btn" class="fas fa-shopping-cart bc"></div>
+      <a href="{% url 'signup' %}"><div id="login-btn" class="fas fa-user bc "></div></a>
+  </div>
+
+  <form action="{% url 'searchproducts' %}" class="search-form">
+      <input type="search" name="searchname" placeholder="search here..." id="search-box">
+      <label for="search-box" class="fas fa-search"></label>
+      <a href="{% url 'search' %}">
+    <svg class="sea bi bi-gear" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M8.837 1.626c-.246-.835-1.428-.835-1.674 0l-.094.319A1.873 1.873 0 014.377 3.06l-.292-.16c-.764-.415-1.6.42-1.184 1.185l.159.292a1.873 1.873 0 01-1.115 2.692l-.319.094c-.835.246-.835 1.428 0 1.674l.319.094a1.873 1.873 0 011.115 2.693l-.16.291c-.415.764.42 1.6 1.185 1.184l.292-.159a1.873 1.873 0 012.692 1.116l.094.318c.246.835 1.428.835 1.674 0l.094-.319a1.873 1.873 0 012.693-1.115l.291.16c.764.415 1.6-.42 1.184-1.185l-.159-.291a1.873 1.873 0 011.116-2.693l.318-.094c.835-.246.835-1.428 0-1.674l-.319-.094a1.873 1.873 0 01-1.115-2.692l.16-.292c.415-.764-.42-1.6-1.185-1.184l-.291.159A1.873 1.873 0 018.93 1.945l-.094-.319zm-2.633-.283c.527-1.79 3.065-1.79 3.592 0l.094.319a.873.873 0 001.255.52l.292-.16c1.64-.892 3.434.901 2.54 2.541l-.159.292a.873.873 0 00.52 1.255l.319.094c1.79.527 1.79 3.065 0 3.592l-.319.094a.873.873 0 00-.52 1.255l.16.292c.893 1.64-.902 3.434-2.541 2.54l-.292-.159a.873.873 0 00-1.255.52l-.094.319c-.527 1.79-3.065 1.79-3.592 0l-.094-.319a.873.873 0 00-1.255-.52l-.292.16c-1.64.893-3.433-.902-2.54-2.541l.159-.292a.873.873 0 00-.52-1.255l-.319-.094c-1.79-.527-1.79-3.065 0-3.592l.319-.094a.873.873 0 00.52-1.255l-.16-.292c-.892-1.64.902-3.433 2.541-2.54l.292.159a.873.873 0 001.255-.52l.094-.319z" clip-rule="evenodd"/>
+          <path fill-rule="evenodd" d="M8 5.754a2.246 2.246 0 100 4.492 2.246 2.246 0 000-4.492zM4.754 8a3.246 3.246 0 116.492 0 3.246 3.246 0 01-6.492 0z" clip-rule="evenodd"/>
+    </svg> 
+      </a>
+
+
+  </form>
+
+
+
+
+
+
+</header>
+
+
+<!-- header section ends  -->

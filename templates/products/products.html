@@ -1,0 +1,141 @@
+<style>
+    .p{
+        text-align: center;
+    font-weight: bold;
+    font-size: 4em;
+    margin: 21px;
+           }    
+           .statu {
+            position: absolute;
+    bottom: 38em;
+    left: 59em;
+    background: #fff;
+    padding: 4px;
+    height: 22px;
+    width: 63px;
+    font-weight: 900;
+    font-family: 'Merienda';
+}
+.statu:hover {
+    background: #bac34e;
+    color: #fff;
+    
+}
+
+.pp{
+    font-size: 2rem;
+    margin: 1rem 0;
+    color: #666;
+}
+.dark-theme .pp{
+    color: #fff;
+}
+.pp:hover{
+    color: var(--main-color);
+}
+</style>
+{%   extends 'base.html'   %}
+{% load static %}
+{% block title %}Shop{% endblock %}
+{%  block content  %}
+
+<div class="heading">
+    <h1 style="color: #222 !important;">our shop</h1>
+    <p> <a href="{% url 'index' %}">home >></a> shop </p>
+</div>
+
+<section class="category">
+
+    <div class="box-container">
+
+        <a href="" class="box">
+            <img src="{% static 'image/cat-1.png' %}" alt="">
+            <p class="pp">fresh fruits</p>
+        </a>
+
+        <a href="#" class="box">
+            <img src="{% static 'image/cat-2.png' %}" alt="">
+            <p class="pp">vegetables</p>
+        </a>
+
+        <a href="#" class="box">
+            <img src="{% static 'image/cat-3.png' %}" alt="">
+            <p class="pp">organic spices</p>
+        </a>
+
+        <a href="#" class="box">
+            <img src="{% static 'image/cat-4.png' %}" alt="">
+            <p class="pp">fresh meat</p>
+        </a>
+
+        <a href="#" class="box">
+            <img src="{% static 'image/cat-5.png' %}" alt="">
+            <p class="pp">organic wheat</p>
+        </a>
+
+    </div>
+
+</section>
+
+
+
+
+<p class="p">Products</p>
+
+<section class="products">
+
+
+    <div class="box-container">
+
+
+
+        {% for pro in products %}
+        <div class="box">
+            <div class="icons">
+                <a href="#" class="fas fa-shopping-cart bcs"></a>
+                <a href="{% url 'product_favorite' pro_id=pro.id %}" class="fas fa-heart bcs"></a>
+                <a href="{% url 'product' pro_id=pro.id %}" class="fas fa-eye bcs"></a>
+            </div>
+        <div style="width: auto;" class="image">
+            <img style="width: auto;" src="{{pro.photo.url}}" alt="">
+        </div>
+
+        <div class="content">
+            <h3 class="text-truncate">{{pro.name}}</h3>
+            <div class="price">{{pro.price}}$</div>
+            <div>
+            <a class="statu ">{{pro.statu}}</a>                
+            </div>
+
+
+            <!-- <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+            </div> -->
+        </div>
+    </div>
+
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

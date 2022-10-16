@@ -1,0 +1,130 @@
+<style>
+    .p{
+        text-align: center;
+    font-weight: bold;
+    font-size: 4em;
+    margin: 21px;
+           }    
+           .statu {
+            position: absolute;
+    bottom: 38em;
+    left: 59em;
+    background: #fff;
+    padding: 4px;
+    height: 22px;
+    width: 63px;
+    font-weight: 900;
+    font-family: 'Merienda';
+}
+.statu:hover {
+    background: #bac34e;
+    color: #fff;
+    
+}
+
+</style>
+{%   extends 'base.html'   %}
+{% load static %}
+{% block title %}Shop{% endblock %}
+{%  block content  %}
+
+<div class="heading">
+    <h1>our shop</h1>
+    <p> <a href="{% url 'index' %}">home >></a> shop </p>
+</div>
+
+<section class="category">
+
+    <div class="box-container">
+
+        <a href="" class="box">
+            <img src="{% static 'image/cat-1.png' %}" alt="">
+            <h3>fresh fruits</h3>
+        </a>
+
+        <a href="#" class="box">
+            <img src="{% static 'image/cat-2.png' %}" alt="">
+            <h3>vegetables</h3>
+        </a>
+
+        <a href="#" class="box">
+            <img src="{% static 'image/cat-3.png' %}" alt="">
+            <h3>organic spices</h3>
+        </a>
+
+        <a href="#" class="box">
+            <img src="{% static 'image/cat-4.png' %}" alt="">
+            <h3>fresh meat</h3>
+        </a>
+
+        <a href="#" class="box">
+            <img src="{% static 'image/cat-5.png' %}" alt="">
+            <h3>organic wheat</h3>
+        </a>
+
+    </div>
+
+</section>
+
+
+
+
+<h1 class="p">Products</h1>
+
+<section class="products">
+
+
+    <div class="box-container">
+
+
+
+        {% for pro in products %}
+        <div class="box">
+            <div class="icons">
+                <a href="#" class="fas fa-shopping-cart"></a>
+                <a href="{% url 'product_favorite' pro_id=pro.id %}" class="fas fa-heart"></a>
+                <a href="{% url 'product' pro_id=pro.id %}" class="fas fa-eye"></a>
+            </div>
+        <div style="width: auto;" class="image">
+            <img style="width: auto;" src="{{pro.photo.url}}" alt="">
+        </div>
+
+        <div class="content">
+            <h3 class="text-truncate">{{pro.name}}</h3>
+            <div class="price">{{pro.price}}$</div>
+            <div>
+            <a class="statu ">{{pro.statu}}</a>                
+            </div>
+
+
+            <!-- <div class="stars">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+            </div> -->
+        </div>
+    </div>
+
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

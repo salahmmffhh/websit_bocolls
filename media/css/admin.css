@@ -1,0 +1,66 @@
+body.dashboard {
+    background: #30bba8;
+}
+.logo,
+.user-tools a{
+    color: #fff !important;
+}
+#header,
+.module h2,
+.module caption,
+.inline-group h2{
+    animation-name: change-color;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    color: #fff !important;
+}
+.breadcrumbs{
+    animation-name: change-color;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-delay: 0.5s;
+    color: #fff !important;
+    background-color: #f44331;
+}
+.content h1{
+    color: #fff !important;
+}
+.logo{
+    color: #fff !important;
+}
+
+@keyframes change-color {
+    0%{
+        background-color: #f44336;
+    }
+    10%{
+        background-color: #e91e63;
+    }
+    20%{
+        background-color: #9c27b0;
+    }
+    40%{
+        background-color: #673ab7;
+
+    }
+    50%{
+        background-color: #3f51b5;
+    }
+    60%{
+        background-color: #2196f3;
+    }
+    70%{
+        background-color: #03a9f4;
+    }
+    80%{
+        background-color: #00bcd4;
+    }
+    90%{
+        background-color: #009688;
+    }
+    100%{
+        background-color: #4caf50;
+    }
+}

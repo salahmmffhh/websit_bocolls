@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<hrml>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{% static 'css/css-loader.css' %}">
+        {% comment %} <link rel="stylesheet" href="{% static 'css/log.css' %}"> {% endcomment %}
+        <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+        <link rel="stylesheet" href="{% static 'css/pretty-checkbox.min.css' %}">
+        <title>My Bocolls | {% block title %}{% endblock %}</title>
+        <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/style.scss' %}">
+        <link rel="stylesheet" href="{% static 'css/theme-toggler.css' %}">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">           
+        <link rel="stylesheet" href="{% static 'css/style-m.css' %}">           
+
+        <style>
+
+			.dark-theme .fa-bars:before{
+			  content: "\f0c9";
+			  color: var(--main-color) !important;
+		  }
+		  .fa-bars:before{
+			content: "\f0c9";
+			color: var(--main-color) !important;
+		}
+		textarea:focus, select:focus, select.custom-select:focus, textarea.form-control:focus, input.form-control:focus, input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=number]:focus, [type=text].form-control:focus, [type=password].form-control:focus, [type=email].form-control:focus, [type=tel].form-control:focus, [contenteditable].form-control:focus {
+			box-shadow: inset 0 3px 0 #dddddd00, 6px 3px 9px var(--main-color), 5px 5px 17px var(--main-color);
+		}
+		</style>
+
+
+</head>
+<body>
+
+    <div class="loading">
+        <div class="spinner">
+            <div class="rect1"></div>
+            <div class="rect2"></div>
+            <div class="rect3"></div>
+            <div class="rect4"></div>
+            <div class="rect5"></div>
+          </div>
+    </div>
+
+
+        <div style="top: 170px; 
+        color: #000;" id="theme-open" class="fas fa-bars"></div>
+
+<div class="themes-container">
+
+    <div id="theme-close" style="top: 52px;
+    position: relative;" class="fas fa-times"></div>
+
+
+
+
+
+    <h3>pick a color</h3>
+
+    <div class="theme-colors">
+        <div class="color" style="background:#bac34e"></div>
+        <div class="color" style="background:#2980b9"></div>
+        <div class="color" style="background:#27ae60;"></div>
+        <div class="color" style="background:#ffa502;"></div>
+        <div class="color" style="background:#8e44ad;"></div>
+        <div class="color" style="background:#0fb9b1;"></div>
+        <div class="color" style="background:#ff0033;"></div>
+        <div class="color" style="background:#e84393;"></div>
+    </div>
+	<hr />
+    <div class="theme-toggler">
+    </div>
+</div>
+
+
+{% include 'partials/_navbar.html' %}
+
+{%  block content  %}
+
+
+
+{% endblock %}
+
+
+{% include 'partials/_footer.html' %}
+
+
+<script>
+    $(document).ready(function(){
+
+        // $(window).on('scroll', function() {
+        //     console.log( $(this).scrollTop() );
+        // });
+        
+        
+            $(".loading").fadeOut(1000 , function(){
+                $("html").css("overflow" , "auto")
+            })
+        })
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.js" ></script>
+<script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+
+{% comment %} <script src="{% static 'js/main.js' %}"></script> {% endcomment %}
+<script src="{% static 'js/theme-toggler.js' %}"></script>
+
+<script src="{% static 'js/jquery-3.4.1.slim.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+<script src="{% static 'js/smtp.js' %}"></script>
+<script src="{% static 'js/ts.js' %}"></script>
+
+
+{% comment %} <script>
+    $(function () {
+        $('[data-toggle="popover"]').popover()
+    })
+    $(".year").text( (new Date).getFullYear() );
+
+
+    $(document).ready(function(){
+        $("#staticBackdrop").on('shown.bs.modal' , function(){
+            $(this).find('#inputQty').focus();
+            $(this).find('#inputQty').select();
+        })
+    })
+
+</script> {% endcomment %}
+
+<script>
+
+</script>
+
+
+
+    </body>
+</html>
+
